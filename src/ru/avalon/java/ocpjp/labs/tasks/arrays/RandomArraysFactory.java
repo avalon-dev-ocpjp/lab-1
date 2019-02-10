@@ -18,9 +18,9 @@ public class RandomArraysFactory implements Factory<int[]>{
 
     @Override
     public int[] create() {
-       int[] array = new int[RANDOM.nextInt(11)+10];
+       int[] array = new int[RANDOM.nextInt(10)+10];
        for(int i=0;i<array.length;i++){
-           array[i]=RANDOM.nextInt(101);
+           array[i]=RANDOM.nextInt(100);
        }
        return array;
     }    

@@ -11,7 +11,7 @@ import java.util.Arrays;
  *
  * @author Sonya
  */
-public class AscendingArraySorting implements Sort<int[]>{
+public class LinearArraySorting implements Sort<int[]>{
 
     @Override
     public void run(int[] array) {        

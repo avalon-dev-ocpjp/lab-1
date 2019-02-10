@@ -43,7 +43,7 @@ public final class OneDimensionalArrays implements Exercise {
         // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
         factory = new RandomArraysFactory();
         writer = new LinearArrayWriter();
-        sort = new AscendingArraySorting();
+        sort = new LinearArraySorting();
     }
 
     /**
