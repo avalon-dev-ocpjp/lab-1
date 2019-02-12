@@ -41,7 +41,9 @@ public final class OneDimensionalArrays implements Exercise {
 
     public OneDimensionalArrays() {
         // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new RandomArrayFacroy();
+        sort = new LinearArraySorting();
+        writer = new LinearArrayWriter();
     }
 
     /**
