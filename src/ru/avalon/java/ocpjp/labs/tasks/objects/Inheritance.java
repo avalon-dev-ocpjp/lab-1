@@ -42,6 +42,8 @@ public final class Inheritance implements Exercise {
 
     public Inheritance() {
         // TODO(Студент): Выполнить инициализацию полей класса Inheritance
+//        comparator = 
+        
         throw new UnsupportedOperationException("Not implemented!");
     }
 
@@ -53,7 +55,9 @@ public final class Inheritance implements Exercise {
         List<Citizen> citizens = new ArrayList<>();
 
         // TODO(Студент): Добавить все элементы, доступные в объекте source, в коллекцию citizens
-
+        
+        
+        
         // TODO(Студент): Отсортировать список citizens перед выводом в поток
 
         // TODO(Студент): Пользуясь объектом writer вывести список citizens в консоль
