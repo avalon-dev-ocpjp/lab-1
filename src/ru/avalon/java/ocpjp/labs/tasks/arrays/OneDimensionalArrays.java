@@ -40,8 +40,9 @@ public final class OneDimensionalArrays implements Exercise {
     private ObjectWriter<int[]> writer;
 
     public OneDimensionalArrays() {
-        // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new RandomArrayFactory();
+        sort = new LinearArraySort();
+        writer = new LinearArrayWriter();
     }
 
     /**

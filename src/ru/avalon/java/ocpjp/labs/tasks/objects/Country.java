@@ -8,7 +8,7 @@ public interface Country {
     /**
      * Возвращает код страны.
      *
-     * @return код странные в виде строки
+     * @return код страны в виде строки
      * @see <a href="https://en.wikipedia.org/wiki/Country_code">Country code</a>
      */
     String getCode();
