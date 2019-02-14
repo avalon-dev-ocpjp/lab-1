@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import ru.avalon.java.ocpjp.labs.tasks.arrays.OneDimensionalArrays;
 import ru.avalon.java.ocpjp.labs.tasks.arrays.TwoDimensionalArrays;
+import ru.avalon.java.ocpjp.labs.tasks.objects.Inheritance;
 
 /**
  * Абстратное представление об упражнении.
@@ -55,6 +56,8 @@ public interface Exercise {
                         return new OneDimensionalArrays();
                     case "TwoDimesionalArray":
                         return new TwoDimensionalArrays();
+                    case "Inheritance":
+                        return new Inheritance();
                 }
             }
         }
