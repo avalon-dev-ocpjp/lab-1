@@ -1,10 +1,24 @@
 package ru.avalon.java.ocpjp.labs;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import ru.avalon.java.ocpjp.labs.tasks.arrays.OneDimensionalArrays;
+import ru.avalon.java.ocpjp.labs.tasks.arrays.TwoDimensionalArrays;
+import ru.avalon.java.ocpjp.labs.tasks.objects.Inheritance;
+
 /**
  * Абстратное представление об упражнении.
  */
 public interface Exercise {
 
+    final class Patterns {
+        public static Pattern EXERCISE;
+        
+        static {            
+            EXERCISE = Pattern.compile("^(/e|-e|/exercise|-exercise)$");
+        }
+    }
+    
     /**
      * Тело упражнения.
      * <p>
@@ -32,7 +46,22 @@ public interface Exercise {
      * @return Экземпляр класса, реализующего задание
      */
     static Exercise create(String[] args) {
-        // TODO(Студент): Реализовать метод create интерфейса Exercise
-        throw new UnsupportedOperationException("Not implemented!");
+        for (int i = 0; i < args.length; i++) {
+            Matcher matcher = Patterns.EXERCISE.matcher(args[i]);
+            if (matcher.matches()) {
+                if (++i == args.length) {
+                    throw new IllegalArgumentException("Недопустимые аргументы");
+                }
+                switch (args[i]) {
+                    case "linear-arrays":
+                        return new OneDimensionalArrays();
+                    case "planar-arrays":
+                        return new TwoDimensionalArrays();
+                    case "collections":
+                        return new Inheritance();
+                }
+            }
+        }
+        throw new IllegalArgumentException("Недопустимые аргументы");
     }
 }
