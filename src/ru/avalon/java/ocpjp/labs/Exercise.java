@@ -12,7 +12,6 @@ import ru.avalon.java.ocpjp.labs.tasks.objects.Inheritance;
 public interface Exercise {
     
     final class Patterns {
-        
         public static Pattern EXERCISE;
         
         static {
@@ -46,7 +45,7 @@ public interface Exercise {
      * @param args аргументы командной строки
      * @return Экземпляр класса, реализующего задание
      */
-    static Exercise create(String[] args) {
+    static Exercise create(String ... args) {
         // TODO(Студент): Реализовать метод create интерфейса Exercise
         for (int i = 0; i < args.length; i++) {
             Matcher matcher = Patterns.EXERCISE.matcher(args[i]);

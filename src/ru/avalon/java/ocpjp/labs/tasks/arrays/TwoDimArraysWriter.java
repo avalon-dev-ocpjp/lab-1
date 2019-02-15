@@ -17,17 +17,26 @@ public class TwoDimArraysWriter implements ObjectWriter<int[][]> {
     
         private PrintStream stream = System.out; 
 
-    @Override
-    public void write(int[][] array) throws IOException {
+    public String arrayToString(int[][] array) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
-            
+            for (int j = 0; j < array[i].length; j++) {
+                sb.append(array[i][j]).append(" ");
+            }
+            sb.append("\n");
         }
+        return sb.toString();
     }
 
     @Override
     public void close() throws IOException {
         stream = null;
+    }
+
+    @Override
+    public void write(int[][] array) throws IOException {
+        String string = arrayToString(array);
+        stream.println(string);
     }
  
 }

@@ -18,8 +18,7 @@ public class RandomTwoDimArrays implements Factory<int[][]>{
 
     @Override
     public int[][] create() {
-        int dim = RANDOM.nextInt(10) + 10;
-        int[][] array = new int[dim][dim];
+        int[][] array = new int[RANDOM.nextInt(10) + 10][RANDOM.nextInt(10) + 10];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 array[i][j] = RANDOM.nextInt(100);

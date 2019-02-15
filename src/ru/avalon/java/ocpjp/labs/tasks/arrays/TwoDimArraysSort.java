@@ -5,6 +5,8 @@
  */
 package ru.avalon.java.ocpjp.labs.tasks.arrays;
 
+import java.util.Arrays;
+
 /**
  *
  * @author lesya
@@ -13,7 +15,19 @@ public class TwoDimArraysSort implements Sort<int[][]> {
 
     @Override
     public void run(int[][] dataSet) {
-        
+        int[] oneDimArray = new int[dataSet[0].length * dataSet.length];
+        int k = 0;
+        for (int i = 0; i < dataSet.length; i++) {
+            for (int j = 0; j < dataSet[0].length; j++) {
+                oneDimArray[k++] = dataSet[i][j];
+            }
+        }
+        Arrays.sort(oneDimArray);
+        k = 0;
+        for (int i = 0; i < dataSet.length; i++) {
+            for (int j = 0; j < dataSet[0].length; j++) {
+                dataSet[i][j] = oneDimArray[k++];
+            }
+        }
     }
-    
 }
