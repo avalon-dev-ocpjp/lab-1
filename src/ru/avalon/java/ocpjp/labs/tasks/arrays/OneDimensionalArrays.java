@@ -26,7 +26,7 @@ public final class OneDimensionalArrays implements Exercise {
      * возрастанию.
      */
     private Sort<int[]> sort;
-
+    
     /**
      * Объект, отвечающий за вывод одномерного массива в
      * консоль.
@@ -41,7 +41,9 @@ public final class OneDimensionalArrays implements Exercise {
 
     public OneDimensionalArrays() {
         // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new RandomArrayFactory();
+        sort = new LinearArraysSort();
+        writer = new LinearArraysWriter();
     }
 
     /**
