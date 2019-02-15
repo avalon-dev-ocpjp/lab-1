@@ -18,6 +18,7 @@ public class RandomCountry implements Country{
     private static String countryPath = "C:\\Java\\Avalon\\Projects\\lab-1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\countries.txt";
     private String name;
     private String code;
+    static int ii=0;
     
     static {
         Data data= new FilesReader(); 
@@ -27,7 +28,7 @@ public class RandomCountry implements Country{
     public RandomCountry(){
         Random random = new Random();
         int index = random.nextInt(countries.size());
-        String str = countries.get(index);
+        String str = countries.get(index);        
         String[] arr = str.split(":");
         code = arr[0];
         name = arr[1];

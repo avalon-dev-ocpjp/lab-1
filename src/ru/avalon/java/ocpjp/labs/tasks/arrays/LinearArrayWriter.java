@@ -15,7 +15,7 @@ import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
  */
 public class LinearArrayWriter implements ObjectWriter<int[]> {
     
-    PrintStream stream = System.out;
+   private PrintStream stream = System.out;
     
     @Override
     public void write(int[] array) throws IOException {

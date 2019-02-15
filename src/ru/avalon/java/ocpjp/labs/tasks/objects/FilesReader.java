@@ -15,20 +15,23 @@ import java.util.Scanner;
  *
  * @author Sonya
  */
-public class FilesReader implements Data<List<String>>{
-           
+public class FilesReader implements Data<List<String>> {
+
     @Override
     public List<String> getData(String path) {
-      File  file = new File(path);
-      List<String> list = new ArrayList();
-        try (Scanner sc = new Scanner(file)){            
-            while(sc.hasNextLine()){                
-                list.add(sc.nextLine());
+        File file = new File(path);
+        List<String> list = new ArrayList();
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine().trim();
+                if (!line.isEmpty()) {
+                    list.add(line);
+                }
             }
         } catch (FileNotFoundException ex) {
-            System.err.println("FilesReader:getData(): "+ex.getMessage());
-        }        
-        if (list.isEmpty()){
+            System.err.println("FilesReader:getData(): " + ex.getMessage());
+        }
+        if (list.isEmpty()) {
             throw new IllegalArgumentException("File is Empty!");
         }
         return list;

@@ -1,5 +1,6 @@
 package ru.avalon.java.ocpjp.labs.tasks.objects;
 
+import java.io.IOException;
 import ru.avalon.java.ocpjp.labs.Exercise;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
@@ -37,13 +38,15 @@ public final class Inheritance implements Exercise {
     public Inheritance() {
         // TODO(Студент): Выполнить инициализацию полей класса Inheritance
         source = new CitizenSourse();
+        comparator = new CountryComparator().thenComparing(new NameComparator());
+        writer = new CitizenWriter();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void run() {
+    public void run() throws IOException {
         List<Citizen> citizens = new ArrayList<>();
 
         // TODO(Студент): Добавить все элементы, доступные в объекте source, в коллекцию citizens
@@ -52,9 +55,11 @@ public final class Inheritance implements Exercise {
             citizens.add(human);
         }        
         // TODO(Студент): Отсортировать список citizens перед выводом в поток
-        for(Citizen human:citizens){
-            System.out.println(human);
-        } 
+        citizens.sort(comparator);
+       
         // TODO(Студент): Пользуясь объектом writer вывести список citizens в консоль
+        for(int i=0; i<citizens.size();i++){
+            writer.write(citizens.get(i));
+        }
     }
 }

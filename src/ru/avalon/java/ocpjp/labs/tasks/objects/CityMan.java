@@ -21,14 +21,4 @@ public class CityMan extends RandomPerson implements Citizen {
     public Country getCountry() {
         return country;
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.getName()).append(" ")
-                .append(this.getLastName()).append(" ")
-                .append(country.getName()).append(" ")
-                .append(country.getCode());
-        return sb.toString();
-    }
 }

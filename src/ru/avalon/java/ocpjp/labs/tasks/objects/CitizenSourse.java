@@ -21,21 +21,11 @@ public class CitizenSourse implements Iterable<Citizen> {
     public CitizenSourse() {
         Random random = new Random();
         citizens = new ArrayList();
-        int count = random.nextInt((10)+10);
+        int count = random.nextInt(10)+20;
         for(int i=0;i<count;i++){
             citizens.add(new CityMan());
         }        
     }
-
-//    @Override
-//    public boolean hasNext() {
-//        return index < citizens.size();        
-//    }
-//
-//    @Override
-//    public Citizen next() {
-//        return citizens.get(index++);
-//    }
 
     @Override
     public Iterator<Citizen> iterator() {
