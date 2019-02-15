@@ -5,6 +5,8 @@ import ru.avalon.java.ocpjp.labs.common.Factory;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Задание, направленное на получение умений и навыков
@@ -41,7 +43,11 @@ public final class OneDimensionalArrays implements Exercise {
 
     public OneDimensionalArrays() {
         // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        
+        factory = new IntArrayFactory();
+        sort = new IntArraySort();
+        writer = new IntArrayWriter();
+
     }
 
     /**
@@ -53,4 +59,41 @@ public final class OneDimensionalArrays implements Exercise {
         sort.run(array);
         writer.write(array);
     }
+}
+
+class IntArrayFactory implements Factory<int[]>{
+
+    @Override
+    public int[] create() {
+        Random rnd = new Random();
+        int[] arr = new int[10 + rnd.nextInt(10)];
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = rnd.nextInt(100);
+        }
+        return arr;
+    }
+    
+}
+
+class IntArraySort implements Sort<int[]>{
+
+    @Override
+    public void run(int[] dataSet) {
+        Arrays.sort(dataSet);
+    }
+    
+}
+
+class IntArrayWriter implements ObjectWriter<int[]>{
+
+    @Override
+    public void write(int[] arr) throws IOException {
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Override
+    public void close() throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
