@@ -33,6 +33,7 @@ public interface Exercise {
      */
     static Exercise create(String[] args) {
         // TODO(Студент): Реализовать метод create интерфейса Exercise
+
         throw new UnsupportedOperationException("Not implemented!");
     }
 }
