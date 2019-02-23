@@ -11,6 +11,7 @@ import java.io.IOException;
  * объявления и использования одномерных массивов.
  */
 public final class OneDimensionalArrays implements Exercise {
+    
     /**
      * Фабрика, создающая одномерный массив случайной
      * длины, содержащие случайные числа в интервале
@@ -40,8 +41,9 @@ public final class OneDimensionalArrays implements Exercise {
     private ObjectWriter<int[]> writer;
 
     public OneDimensionalArrays() {
-        // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new RandomArrayFactory();
+        writer = new LinearArrayWriter();
+        sort = new SortOneDimArr();
     }
 
     /**
