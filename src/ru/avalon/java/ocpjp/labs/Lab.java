@@ -1,5 +1,7 @@
 package ru.avalon.java.ocpjp.labs;
 
+
+
 public class Lab {
 
     /**
@@ -12,6 +14,7 @@ public class Lab {
      * @param args аргументы командной строки
      */
     public static void main(String ... args) {
+
         Exercise exercise = Exercise.create(args);
         try {
             exercise.run();
