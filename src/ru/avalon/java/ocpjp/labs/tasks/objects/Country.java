@@ -1,7 +1,7 @@
 package ru.avalon.java.ocpjp.labs.tasks.objects;
 
 /**
- * Аьстрактное представление о стране.
+ * Абстрактное представление о стране.
  */
 public interface Country {
 

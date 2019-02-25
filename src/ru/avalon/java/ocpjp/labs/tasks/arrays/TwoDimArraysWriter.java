@@ -15,7 +15,7 @@ import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
  */
 public class TwoDimArraysWriter implements ObjectWriter<int[][]> {
     
-        private PrintStream stream = System.out; 
+    private PrintStream stream = System.out; 
 
     public String arrayToString(int[][] array) {
         StringBuilder sb = new StringBuilder();
