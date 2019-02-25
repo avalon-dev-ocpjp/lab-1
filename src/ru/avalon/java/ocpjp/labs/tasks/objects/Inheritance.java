@@ -1,11 +1,14 @@
 package ru.avalon.java.ocpjp.labs.tasks.objects;
-
+import java.io.IOException;
 import ru.avalon.java.ocpjp.labs.Exercise;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Задание, направленное на изучение следующих тем:
@@ -42,7 +45,9 @@ public final class Inheritance implements Exercise {
 
     public Inheritance() {
         // TODO(Студент): Выполнить инициализацию полей класса Inheritance
-        throw new UnsupportedOperationException("Not implemented!");
+        comparator = new CitizenComparator();
+        source = new CitizenSource();
+        writer = new CitizenWriter();
     }
 
     /**
@@ -51,11 +56,19 @@ public final class Inheritance implements Exercise {
     @Override
     public void run() {
         List<Citizen> citizens = new ArrayList<>();
+        
+        for (Citizen citizen : source) {  // TODO(Студент): Добавить все элементы, доступные в объекте source, в коллекцию citizens
+            citizens.add(citizen);
+        }
 
-        // TODO(Студент): Добавить все элементы, доступные в объекте source, в коллекцию citizens
+        Collections.sort(citizens, comparator);  // TODO(Студент): Отсортировать список citizens перед выводом в поток
 
-        // TODO(Студент): Отсортировать список citizens перед выводом в поток
-
-        // TODO(Студент): Пользуясь объектом writer вывести список citizens в консоль
+        citizens.forEach((citizen) -> {          // TODO(Студент): Пользуясь объектом writer вывести список citizens в консоль
+            try {
+                writer.write(citizen);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
     }
 }

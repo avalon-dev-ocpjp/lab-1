@@ -49,7 +49,10 @@ public final class TwoDimensionalArrays implements Exercise {
 
     public TwoDimensionalArrays() {
         // TODO(Студент): Выполнить инициализацию полей класса TwoDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new RandomTwoDimArrays();
+        sort = new TwoDimArraysSort();
+        writer = new TwoDimArraysWriter();
+        
     }
 
     /**
