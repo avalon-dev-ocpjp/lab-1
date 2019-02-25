@@ -5,6 +5,8 @@ import ru.avalon.java.ocpjp.labs.common.Factory;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Задание, направленное на получение умений и навыков
@@ -13,11 +15,11 @@ import java.io.IOException;
 public final class OneDimensionalArrays implements Exercise {
     /**
      * Фабрика, создающая одномерный массив случайной
-     * длины, содержащие случайные числа в интервале
+     * длины, содержащий случайные числа в интервале
      * от {@code 0} до {@code 100}.
      *<p>
      * Длина массивов должна колебаться в диапазоне от
-     * 10, до 20 элементов.
+     * 10 до 20 элементов.
      */
     private Factory<int[]> factory;
 
@@ -40,8 +42,9 @@ public final class OneDimensionalArrays implements Exercise {
     private ObjectWriter<int[]> writer;
 
     public OneDimensionalArrays() {
-        // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = OneDimensionalArrays::createArray;
+        sort = Arrays::sort;
+        writer = new OneDimensionalArraysWriter();
     }
 
     /**
@@ -52,5 +55,19 @@ public final class OneDimensionalArrays implements Exercise {
         int[] array = factory.create();
         sort.run(array);
         writer.write(array);
+        writer.close();
+    }
+
+    /**
+     * Создает одномерный массив случайной
+     * длины, содержащий случайные числа в интервале
+     * от 0 до 100. Длина массива колеблетя в диапазоне
+     * от 10 до 20 элементов.
+     *
+     * @return одномерный массив элементов типа int
+     */
+    private static int[] createArray() {
+        Random r = new Random();
+        return r.ints(r.nextInt(11) + 10, 0, 100).toArray();
     }
 }

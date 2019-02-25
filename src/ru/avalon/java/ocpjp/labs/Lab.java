@@ -13,17 +13,16 @@ public class Lab {
      */
     public static void main(String ... args) {
         Exercise exercise = Exercise.create(args);
+
+        if(exercise == null) {
+            System.out.println("Error! Invalid application arguments.");
+            return;
+        }
+
         try {
             exercise.run();
         } catch (Exception e) {
             e.printStackTrace(System.err);
         }
-
-        /*
-         * TODO(Студент): Пользуясь терминалом, запустить все задания лабораторной работы
-         * 1. Запустить задание OneDimensionalArrays
-         * 2. Запустить задание TwoDimensionalArrays
-         * 3. Запустить задание Inheritance
-         */
     }
 }

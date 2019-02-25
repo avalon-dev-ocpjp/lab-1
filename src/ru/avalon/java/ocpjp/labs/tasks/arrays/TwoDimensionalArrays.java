@@ -5,6 +5,8 @@ import ru.avalon.java.ocpjp.labs.common.Factory;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Задание, направленное на получение умений и навыков
@@ -26,7 +28,7 @@ public final class TwoDimensionalArrays implements Exercise {
     private Factory<int[][]> factory;
 
     /**
-     * Выполняет соритровку двумерного массива таким
+     * Выполняет сортировку двумерного массива таким
      * образом, что все элементы массива должны быть
      * расположены по возрастанию слева направо, сверху
      * вниз.
@@ -48,8 +50,9 @@ public final class TwoDimensionalArrays implements Exercise {
     private ObjectWriter<int[][]> writer;
 
     public TwoDimensionalArrays() {
-        // TODO(Студент): Выполнить инициализацию полей класса TwoDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = TwoDimensionalArrays::createArray;
+        sort = TwoDimensionalArrays::sort;
+        writer = new TwoDimensionalArraysWriter();
     }
 
     /**
@@ -60,5 +63,49 @@ public final class TwoDimensionalArrays implements Exercise {
         int[][] array = factory.create();
         sort.run(array);
         writer.write(array);
+        writer.close();
+    }
+
+    /**
+     * Создает двумерный массив, , содержащий случайные числа
+     * в диапазоне от 0 до 100. Количество строк и столбцов
+     * колеблется в диапазоне от 10 до 20.
+     *
+     * @return двумерный массив элементов типа int
+     */
+    private static int[][] createArray() {
+        Random r = new Random();
+        int width = r.nextInt(11) + 10;
+        int height = r.nextInt(11) + 10;
+        int[][] array = new int[height][];
+
+        for(int i = 0; i < height; i++)
+            array[i] = r.ints(width, 0, 100).toArray();
+
+        return array;
+    }
+
+    /**
+     * Выполняет сортировку
+     *
+     * @param array двумерный массив элементов типа int,
+     *              который следует отсортировать
+     */
+    private static void sort(int[][] array) {
+        int[] newArray = new int[array.length * array[0].length];
+        int newArrayIndex = 0;
+
+        for(int i = 0; i < array.length; i++) {
+            System.arraycopy(array[i], 0, newArray, newArrayIndex, array[i].length);
+            newArrayIndex += array[i].length;
+        }
+
+        Arrays.sort(newArray);
+        newArrayIndex = 0;
+
+        for(int i = 0; i < array.length; i++) {
+            System.arraycopy(newArray, newArrayIndex, array[i], 0, array[i].length);
+            newArrayIndex += array[i].length;
+        }
     }
 }

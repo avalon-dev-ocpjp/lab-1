@@ -1,10 +1,13 @@
 package ru.avalon.java.ocpjp.labs;
 
+import ru.avalon.java.ocpjp.labs.tasks.arrays.OneDimensionalArrays;
+import ru.avalon.java.ocpjp.labs.tasks.arrays.TwoDimensionalArrays;
+import ru.avalon.java.ocpjp.labs.tasks.objects.Inheritance;
+
 /**
  * Абстратное представление об упражнении.
  */
 public interface Exercise {
-
     /**
      * Тело упражнения.
      * <p>
@@ -29,10 +32,27 @@ public interface Exercise {
      * следует запустить.
      *
      * @param args аргументы командной строки
-     * @return Экземпляр класса, реализующего задание
+     * @return экземпляр класса, реализующего задание
      */
     static Exercise create(String[] args) {
-        // TODO(Студент): Реализовать метод create интерфейса Exercise
-        throw new UnsupportedOperationException("Not implemented!");
+        try {
+            if(args[0].equals("/exercise") || args[0].equals("-exercise") || args[0].equals("/e") || args[0].equals("-e")) {
+                String exercise = args[1];
+                switch(exercise) {
+                    case "OneDimensionalArrays":
+                        return new OneDimensionalArrays();
+                    case "TwoDimensionalArrays":
+                        return new TwoDimensionalArrays();
+                    case "Inheritance":
+                        return new Inheritance();
+                    default:
+                        return null;
+                }
+            } else
+                return null;
+        } catch(ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace(System.err);
+            return null;
+        }
     }
 }
