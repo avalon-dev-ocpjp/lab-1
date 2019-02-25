@@ -36,6 +36,9 @@ public interface Exercise {
      */
     static Exercise create(String[] args) {
         try {
+            if(args.length == 0)
+                return null;
+
             if(args[0].equals("/exercise") || args[0].equals("-exercise") || args[0].equals("/e") || args[0].equals("-e")) {
                 String exercise = args[1];
                 switch(exercise) {
