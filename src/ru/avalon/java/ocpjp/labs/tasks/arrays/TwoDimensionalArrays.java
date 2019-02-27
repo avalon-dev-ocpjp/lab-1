@@ -1,7 +1,9 @@
 package ru.avalon.java.ocpjp.labs.tasks.arrays;
 
 import ru.avalon.java.ocpjp.labs.Exercise;
+import ru.avalon.java.ocpjp.labs.common.Array2DWriterImpl;
 import ru.avalon.java.ocpjp.labs.common.Factory;
+import ru.avalon.java.ocpjp.labs.common.Factory2DImpl;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
 import java.io.IOException;
@@ -48,8 +50,9 @@ public final class TwoDimensionalArrays implements Exercise {
     private ObjectWriter<int[][]> writer;
 
     public TwoDimensionalArrays() {
-        // TODO(Студент): Выполнить инициализацию полей класса TwoDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new Factory2DImpl();
+        sort = new Sort2DImpl();
+        writer = new Array2DWriterImpl();
     }
 
     /**

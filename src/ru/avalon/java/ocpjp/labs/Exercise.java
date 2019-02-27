@@ -1,5 +1,7 @@
 package ru.avalon.java.ocpjp.labs;
 
+import ru.avalon.java.ocpjp.labs.tasks.arrays.OneDimensionalArrays;
+import ru.avalon.java.ocpjp.labs.tasks.arrays.TwoDimensionalArrays;
 import ru.avalon.java.ocpjp.labs.tasks.objects.Inheritance;
 
 /**
@@ -34,7 +36,7 @@ public interface Exercise {
      * @return Экземпляр класса, реализующего задание
      */
     static Exercise create(String[] args) {
-        Inheritance task = new Inheritance();
+        TwoDimensionalArrays task = new TwoDimensionalArrays();
         return task;
     }
 }

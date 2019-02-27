@@ -81,7 +81,6 @@ public final class Inheritance implements Exercise {
                     reader.readLine();
                     ctr++;
                 }
-                System.out.println(ctr);
                 String string = reader.readLine();
                 while (i < list.size() - 1 && list.get(i) == list.get(i + 1).intValue()) {
                     result.add(string);
@@ -137,10 +136,8 @@ public final class Inheritance implements Exercise {
     @Override
     public void run() {
         List<Citizen> citizens = new ArrayList<>();
-        Iterator<Citizen> iterator = source.iterator();
-        while (iterator.hasNext()) {
-            citizens.add(iterator.next());
-            iterator.remove();
+        for(Citizen citizen : source) {
+            citizens.add(citizen);
         }
         citizens.sort(comparator);
         writer = new ObjectWriterImpl();

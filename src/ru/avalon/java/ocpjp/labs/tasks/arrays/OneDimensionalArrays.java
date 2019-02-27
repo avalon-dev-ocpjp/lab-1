@@ -1,7 +1,9 @@
 package ru.avalon.java.ocpjp.labs.tasks.arrays;
 
 import ru.avalon.java.ocpjp.labs.Exercise;
+import ru.avalon.java.ocpjp.labs.common.Array1DWriterImpl;
 import ru.avalon.java.ocpjp.labs.common.Factory;
+import ru.avalon.java.ocpjp.labs.common.Factory1DImpl;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
 import java.io.IOException;
@@ -40,8 +42,9 @@ public final class OneDimensionalArrays implements Exercise {
     private ObjectWriter<int[]> writer;
 
     public OneDimensionalArrays() {
-        // TODO(Студент): Выполнить инициализацию полей класса OneDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new Factory1DImpl();
+        sort = new Sort1DImpl();
+        writer = new Array1DWriterImpl();
     }
 
     /**
