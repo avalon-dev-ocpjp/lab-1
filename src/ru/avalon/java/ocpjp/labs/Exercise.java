@@ -36,7 +36,17 @@ public interface Exercise {
      * @return Экземпляр класса, реализующего задание
      */
     static Exercise create(String[] args) {
-        TwoDimensionalArrays task = new TwoDimensionalArrays();
-        return task;
+        String arg = args[2];
+
+        if(arg.equalsIgnoreCase("TwoDimensionalArrays")) {
+            return new TwoDimensionalArrays();
+        }
+        if(arg.equalsIgnoreCase("OneDimensionalArrays")) {
+            return new OneDimensionalArrays();
+        }
+        if(arg.equalsIgnoreCase("Inheritance")) {
+            return new Inheritance();
+        }
+        return null;
     }
 }
