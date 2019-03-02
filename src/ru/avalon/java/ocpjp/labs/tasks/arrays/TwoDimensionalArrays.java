@@ -5,6 +5,8 @@ import ru.avalon.java.ocpjp.labs.common.Factory;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Задание, направленное на получение умений и навыков
@@ -49,7 +51,9 @@ public final class TwoDimensionalArrays implements Exercise {
 
     public TwoDimensionalArrays() {
         // TODO(Студент): Выполнить инициализацию полей класса TwoDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new IntIntArrayFactory();
+        sort = new IntIntArraySort();
+        writer = new IntIntArrayWriter();
     }
 
     /**
@@ -61,4 +65,57 @@ public final class TwoDimensionalArrays implements Exercise {
         sort.run(array);
         writer.write(array);
     }
+}
+
+class IntIntArrayFactory implements Factory<int[][]>{
+
+    @Override
+    public int[][] create() {
+        Random rnd = new Random();
+        int[][] arr = new int[10 + rnd.nextInt(10)][10 + rnd.nextInt(10)];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = rnd.nextInt(100);
+            }           
+        }
+        return arr;
+    }
+    
+}
+
+class IntIntArraySort implements Sort<int[][]>{
+
+    @Override
+    public void run(int[][] dataSet) {
+        int[] arr = new int[dataSet.length * dataSet[0].length];
+        for (int i = 0; i < dataSet.length; i++) {
+            for (int j = 0; j < dataSet[i].length; j++) {
+                arr[i * dataSet[0].length + j] = dataSet[i][j];
+            }           
+        }
+        
+        Arrays.sort(arr);
+        
+        for (int i = 0; i < dataSet.length; i++) {
+            for (int j = 0; j < dataSet[i].length; j++) {
+                dataSet[i][j] = arr[i * dataSet[0].length + j];
+            }           
+        }
+        
+    }
+    
+}
+
+class IntIntArrayWriter implements ObjectWriter<int[][]>{
+
+    @Override
+    public void write(int[][] arr) throws IOException {
+        for(int[] arri : arr){
+            System.out.println(Arrays.toString(arri));
+        }
+    }
+
+    @Override
+    public void close() {}
+    
 }
