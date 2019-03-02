@@ -48,8 +48,9 @@ public final class TwoDimensionalArrays implements Exercise {
     private ObjectWriter<int[][]> writer;
 
     public TwoDimensionalArrays() {
-        // TODO(Студент): Выполнить инициализацию полей класса TwoDimensionalArrays
-        throw new UnsupportedOperationException("Not implemented!");
+        factory = new TwoArrayFactory();
+        sort = new TwoSorter();
+        writer = new TwoWriter();
     }
 
     /**

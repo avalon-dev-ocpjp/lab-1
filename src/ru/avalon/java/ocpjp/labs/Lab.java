@@ -18,12 +18,13 @@ public class Lab {
         } catch (Exception e) {
             e.printStackTrace(System.err);
         }
+        
 
         /*
          * TODO(Студент): Пользуясь терминалом, запустить все задания лабораторной работы
-         * 1. Запустить задание OneDimensionalArrays
-         * 2. Запустить задание TwoDimensionalArrays
-         * 3. Запустить задание Inheritance
+         * 1. Запустить задание OneDimensionalArrays ("one")
+         * 2. Запустить задание TwoDimensionalArrays ("two")
+         * 3. Запустить задание Inheritance          ("three")
          */
     }
 }

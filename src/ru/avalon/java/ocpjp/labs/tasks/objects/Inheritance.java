@@ -1,10 +1,13 @@
 package ru.avalon.java.ocpjp.labs.tasks.objects;
 
+import java.io.IOException;
 import ru.avalon.java.ocpjp.labs.Exercise;
 import ru.avalon.java.ocpjp.labs.common.ObjectWriter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -42,20 +45,27 @@ public final class Inheritance implements Exercise {
 
     public Inheritance() {
         // TODO(Студент): Выполнить инициализацию полей класса Inheritance
-        throw new UnsupportedOperationException("Not implemented!");
+        source = new Source();
+        comparator = new CitizenComparator();
+        writer = new CitizenWriter();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void run() {
+    public void run() throws IOException {
         List<Citizen> citizens = new ArrayList<>();
-
         // TODO(Студент): Добавить все элементы, доступные в объекте source, в коллекцию citizens
-
+        Iterator<Citizen> iter = source.iterator();
+        while(iter.hasNext()) {
+           citizens.add(iter.next());
+        }
         // TODO(Студент): Отсортировать список citizens перед выводом в поток
-
+        Collections.sort(citizens, comparator);
         // TODO(Студент): Пользуясь объектом writer вывести список citizens в консоль
+        for(Citizen citizen: citizens) {
+        writer.write(citizen);
+        }       
     }
 }
