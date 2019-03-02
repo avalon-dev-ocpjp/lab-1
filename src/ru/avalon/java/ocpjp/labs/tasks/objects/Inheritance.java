@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import ru.avalon.java.ocpjp.labs.common.Factory;
 
 /**
  * Задание, направленное на изучение следующих тем:
@@ -69,20 +70,34 @@ public final class Inheritance implements Exercise {
             }
 
             @Override
-            public void close() throws IOException {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-
-            
+            public void close() {}    
         };
         
         source = new Iterable<Citizen>(){
+            
+            private String name;
+            private String lastName;          
+                
             @Override
             public Iterator<Citizen> iterator() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                return new Iterator<Citizen>() {
+                    @Override
+                    public boolean hasNext() {
+                        return true;
+                    }
+
+                    @Override
+                    public Citizen next() {
+                        return new Factory<Citizen>() {
+                            @Override
+                            public Citizen create() {
+                                return null;
+                            }                           
+                        }.create();
+                    }
+                };
             }
-            
         };
     }
 
